@@ -1,9 +1,12 @@
 var express = require('express'),
 	mongoose = require('mongoose'),
+	path = require('path'),
 	cors = require('cors'),
 	bodyParser = require('body-parser'),
 	db = mongoose.connection,
 	app = express();
+
+app.use(express.static('public'));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,8 +24,8 @@ app.get('/single-recipe', api.getRecipe);
 app.put('/update-recipe', api.updateRecipe);
 app.delete('/remove-recipe', api.removeRecipe);
 
-app.get('/', function(req, res){
-	res.send('Hi....uh, you\'re not supposed to be here.');
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 });
 
 

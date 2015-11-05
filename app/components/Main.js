@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 import Nav from './Nav'
 import NotFound from './Not-Found'
 import Index from './Index'
+import AddRecipe from './Add-Recipe'
 
 const App = React.createClass({
 
@@ -25,6 +26,7 @@ ReactDom.render((
 	<Router history={createBrowserHistory()}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Index} />
+			<Route path="/add-recipe" component={AddRecipe} />
 			<Route path="*" component={NotFound} />
 		</Route>
 	</Router>

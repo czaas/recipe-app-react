@@ -9,16 +9,16 @@ class Ingredient extends React.Component {
 
 	handleIngredients(e){
 		e.preventDefault()
-		
+
 		let ingredient = {
 			name: this.refs.name.value,
 			qty: this.refs.qty.value,
 			unit: this.refs.unit.value
 		}
 
-		this.props.handleIngredient(ingredient) // passing the ingredient up to the parent component
-
 		this.refs.ingredientForm.reset()
+
+		this.props.handleIngredient(ingredient) // passing the ingredient up to the parent component
 
 	}
 

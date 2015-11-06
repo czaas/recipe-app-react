@@ -11,8 +11,8 @@ class Step extends React.Component {
 		e.preventDefault()
 		
 		let newStep = {
-			step: this.refs.step.value,
-			timer: this.refs.timer.value
+			instruction: this.refs.instruction.value,
+			timer: (this.refs.timer.value ? this.refs.timer.value : null)
 		}
 
 		this.refs.stepForm.reset()
@@ -23,7 +23,7 @@ class Step extends React.Component {
 	render(){
 		return (
 			<form onSubmit={this.handleStep} ref="stepForm">
-				<input type="text" placeholder="Add Step" ref="step" />
+				<input type="text" placeholder="Add Step" ref="instruction" />
 				<input type="number" placeholder="Add Timer for step (optional)" ref="timer" min="0" />
 				<button>Add Step</button>
 			</form>

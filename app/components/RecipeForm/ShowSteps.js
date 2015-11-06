@@ -5,13 +5,20 @@ class ShowSteps extends React.Component {
 	render(){
 
 		let steps = this.props.steps.map(function(step){
-			return <li>{step.name} <br />Timer: {step.timer}</li>
+			if(step === undefined){
+				return ''
+			} else {
+				return <li>{step.instruction} <br />Timer: {step.timer}</li>
+			}
 		})
 
 		return (
-			<ul>
-				{steps}
-			</ul>
+			<div>
+				<h2>Steps</h2>
+				<ul>
+					{steps}
+				</ul>
+			</div>
 		)
 	}
 }

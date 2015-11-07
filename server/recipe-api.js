@@ -16,6 +16,8 @@ exports.updateRecipe = function(req, res){
 
 exports.addRecipe = function(req, res){
 	
+	console.log(req.body);
+
 	var recipe = new Recipe(req.body).save(function(err, newRecipe){
 		if(err) { console.error(err); }
 

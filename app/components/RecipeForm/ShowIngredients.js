@@ -14,7 +14,7 @@ class ShowIngredients extends React.Component {
 
 		return (
 			<div>
-				<h2>Ingredients</h2>
+				<h3>Ingredients</h3>
 				<table>
 					<tbody>
 						<tr>

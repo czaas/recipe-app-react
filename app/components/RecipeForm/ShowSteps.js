@@ -14,7 +14,7 @@ class ShowSteps extends React.Component {
 
 		return (
 			<div>
-				<h2>Steps</h2>
+				<h3>Steps</h3>
 				<ul>
 					{steps}
 				</ul>

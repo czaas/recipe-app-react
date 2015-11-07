@@ -1,19 +1,15 @@
 import _ from 'lodash'
+import $ from 'jquery'
 
 const RecipeStore = {
 	UnitsOfMessurement: ['tsp', 'tbsp', 'fl oz', 'cup', 'pint', 'quart', 'gal', 'mL', 'liter', 'lbs', 'oz', 'grams', 'kg'],
 
-	AllRecipes: [{
-		name: 'Test Recipe', 
-		steps: [{instruction: 'These are the instructions', timer: 5}, {instruction: 'Step number 2!', timer: null}],
-		ingredients: [{name: 'Carrots', qty: 3, unit: 'cups'}],
-		author: 'userId',
-		_id: '8901X'
-	}],
+	AllRecipes: [],
 
 	getRecipes(){
+
 		// should reach out to mongo db then save all recipes in the this.AllRecipes Array
-		return this.AllRecipes
+		
 	},
 
 	getUnits(){
@@ -36,6 +32,16 @@ const RecipeStore = {
 
 	addStepToRecipe(step){
 		_.uniq()
+	},
+
+	SaveRecipe(recipe){
+
+		$.ajax('/api/add-recipe', {
+			data: JSON.stringify(recipe),
+			contentType: 'application/json',
+			type: 'POST'
+		}).success((data)=> console.log(data)).
+		fail((err)=> console.error(err))
 	}
 }
 export default RecipeStore

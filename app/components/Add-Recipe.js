@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 
 import RecipeStore from './Stores/RecipeStore'
 
@@ -48,14 +49,22 @@ class AddRecipe extends React.Component {
 
 	handleSaveRecipe(e){
 		e.preventDefault()
-		
-		RecipeStore.SaveRecipe(this.state.currentRecipe)
+
+		$.ajax('/api/add-recipe', {
+			data: JSON.stringify(this.state.currentRecipe),
+			contentType: 'application/json',
+			type: 'POST'
+		}).success((data)=> {
+			//router.transitionTo('/')
+			console.log(this.props.history)
+			this.props.history.pushState(null, '/')
+		}).fail((err)=> console.error(err))
 	}
 
 	render(){
 		return (
 			<div>
-				<h2>From the Add Recipe Component!</h2>
+				<h2>Add a Recipe</h2>
 
 				<RecipeNameForm addRecipeName={this.handleRecipeName} />
 				<StepForm handleStep={this.handleStep} />

@@ -4,14 +4,6 @@ import $ from 'jquery'
 const RecipeStore = {
 	UnitsOfMessurement: ['tsp', 'tbsp', 'fl oz', 'cup', 'pint', 'quart', 'gal', 'mL', 'liter', 'lbs', 'oz', 'grams', 'kg'],
 
-	AllRecipes: [],
-
-	getRecipes(){
-
-		// should reach out to mongo db then save all recipes in the this.AllRecipes Array
-		
-	},
-
 	getUnits(){
 		return this.UnitsOfMessurement
 	},
@@ -36,12 +28,7 @@ const RecipeStore = {
 
 	SaveRecipe(recipe){
 
-		$.ajax('/api/add-recipe', {
-			data: JSON.stringify(recipe),
-			contentType: 'application/json',
-			type: 'POST'
-		}).success((data)=> console.log(data)).
-		fail((err)=> console.error(err))
+		
 	}
 }
 export default RecipeStore

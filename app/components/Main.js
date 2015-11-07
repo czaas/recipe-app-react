@@ -22,6 +22,10 @@ const App = React.createClass({
 	}
 })
 
+App.contextTypes = {
+	router: React.PropTypes.func.isRequired
+}
+
 ReactDom.render((
 	<Router history={createBrowserHistory()}>
 		<Route path="/" component={App}>
